@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Admin Login</h2>
+      <input type="text" id="adminUsername" placeholder="Username" />
+      <input type="password" id="adminPassword" placeholder="Password" />
+      <button onclick="adminLogin()">Login</button>
+      <p id="errorMessage"></p>
+
+      <script>
+        function adminLogin() {
+          const username = document.getElementById("adminUsername").value;
+          const password = document.getElementById("adminPassword").value;
+
+          // Hardcoded admin credentials (Replace with backend validation)
+          if (username === "admin" && password === "password123") {
+            localStorage.setItem("isAdmin", true);
+            window.location.href = "admin-dashboard.html";
+          } else {
+            document.getElementById("errorMessage").innerText =
+              "Invalid login!";
+          }
+        }
+
+        // Check if admin is logged in
+        function checkAdmin() {
+          if (!localStorage.getItem("isAdmin")) {
+            window.location.href = "/html/admin-login.html";
+          }
+        }
+      </script>
+    </div>
+    <script src="admin.js"></script>
+  </body>
+</html>
