@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <!-- Animation-->
     <link rel="stylesheet" href="../css/animate.css" />
@@ -90,6 +92,8 @@
         width: 100%;
         border-collapse: collapse;
         margin-top: 15px;
+        overflow-x: auto;
+        display: block;
       }
 
       .users-table th,
@@ -176,7 +180,7 @@
     </style>
   </head>
   <body>
-    <div class="admin-dashboard">
+    <div class="admin-dashboard mt-5">
       <div class="header">
         <h1>Admin Dashboard</h1>
         <div>
@@ -185,7 +189,6 @@
           </button>
         </div>
       </div>
-
       <div class="stats-overview">
         <div class="card">
           <h2 class="card-title">Total System Balance</h2>

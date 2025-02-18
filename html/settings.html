@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeShor Trading</title>
+    <!--
+ Mobile Specific Metas
+ ==================================================
+ -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=1024" />
+    <link rel="canonical" href="fortunetrustmarket.html" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TradeShor.com  Trading" />
+    <meta
+      property="og:description"
+      content="Copy-trade most successful crypto
+Trades. Invest together with Binance Labs, Pantera Capital and a16z."
+    />
+    <meta property="og:url" content="TradeShor.com" />
+    <meta property="og:site_name" content="TradeShor.com Investment Services" />
+    <meta
+      property="article:modified_time"
+      content="2021-12-20T11:08:55+00:00"
+    />
+    <meta property="og:image" content="images/features/feature1.jpg" />
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="/favicon.ico" rel="apple-touch-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!--
+ CSS
+ ==================================================
+ -->
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <!-- Animation-->
+    <link rel="stylesheet" href="../css/animate.css" />
+    <!-- Morris CSS -->
+    <link rel="stylesheet" href="../css/morris.css" />
+    <!-- FontAwesome-->
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <!-- Icon font-->
+    <link rel="stylesheet" href="../css/icon-font.css" />
+    <!-- Owl Carousel-->
+    <link rel="stylesheet" href="../css/owl.carousel.min.css" />
+    <!-- Owl Theme -->
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css" />
+    <!-- Colorbox-->
+    <link rel="stylesheet" href="../css/colorbox.css" />
+    <!-- Template styles-->
+    <link rel="stylesheet" href="../css/style.css" />
+    <!-- <link rel="stylesheet" href="stylesheets/output.css"> -->
+    <link rel="stylesheet" href="../css/custom.css" />
+    <!-- Responsive styles-->
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <script
+      src="http://kit.fontawesome.com/b1e2cc998d.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Financial Dashboard</title>
+    <style>
+      :root {
+        --primary: #8884d8;
+        --green: #22c55e;
+        --red: #ef4444;
+        --border: #e5e7eb;
+        --background: #ffffff;
+        --text: #111827;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .header {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: #2d3559;
+        color: white;
+      }
+
+      .status {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(34, 197, 94, 0.1);
+        color: var(--green);
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--green);
+        border-radius: 50%;
+      }
+
+      .ticker {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        padding: 0.5rem 1rem;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(8px);
+      }
+
+      .stock {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+      }
+
+      .stock-change.positive {
+        color: var(--green);
+      }
+      .stock-change.negative {
+        color: var(--red);
+      }
+
+      .main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      @media (min-width: 768px) {
+        /* .main { */
+        /* grid-template-columns: 1fr 1fr; */
+        /* } */
+      }
+
+      .card {
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        padding: 0.6rem;
+      }
+
+      .card-title {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin-bottom: 0.1rem;
+      }
+
+      .balance {
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin: 1rem 0;
+      }
+
+      .button-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .button {
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        border: 1px solid var(--border);
+        background: #2d3559;
+        color: white;
+        cursor: pointer;
+        font-size: 0.875rem;
+      }
+
+      .button-primary {
+        background: #2d3559;
+        color: white;
+        border: none;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .chart-container {
+        height: 300px;
+        margin-top: 1rem;
+      }
+
+      .time-range {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .time-button {
+        padding: 0.25rem 0.75rem;
+        border-radius: 0.375rem;
+        font-size: 0.75rem;
+      }
+
+      .time-button.active {
+        background: var(--primary);
+        color: white;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 24px;
+        padding: 0 24px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .tab {
+        padding: 16px 4px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        color: #666;
+        font-size: 14px;
+      }
+
+      .tab.active {
+        color: #ff6b00;
+        border-bottom: 2px solid #2d3559;
+      }
+
+      .form-content {
+        padding: 24px;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .form-group label {
+        font-size: 14px;
+        color: #666;
+      }
+
+      .form-group input {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+
+      .form-group input:disabled {
+        background-color: #f5f5f5;
+      }
+
+      .save-btn {
+        margin-top: 24px;
+        padding: 10px 16px;
+        background-color: #2d3559;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .save-btn:hover {
+        background-color: #2d3559;
+      }
+
+      @media (max-width: 768px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .card2 {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        /* max-width: 800px; */
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content" style="padding: 20px">
+        <p>Welcome, <span id="username">User</span></p>
+        <script>
+          async function fetchUsername() {
+            try {
+              const response = await fetch("/api/username");
+              const data = await response.json();
+              document.getElementById("username").textContent = data.username;
+            } catch (error) {
+              console.error("Error fetching username:", error);
+            }
+          }
+
+          document.addEventListener("DOMContentLoaded", fetchUsername);
+        </script>
+        <div class="status">
+          <span class="status-dot"></span>
+          <span id="currentDateTime"></span>
+          <script>
+            function updateDateTime() {
+              const now = new Date();
+              const formattedDateTime = now.toLocaleString();
+              document.getElementById("currentDateTime").textContent =
+                formattedDateTime;
+            }
+
+            setInterval(updateDateTime, 1000); // Update every second
+            updateDateTime(); // Initial call to set the date and time immediately
+          </script>
+          On Standby
+        </div>
+        <button
+          class="button"
+          onclick="handleLogout()"
+          style="border-radius: 50px; background-color: #2d3559; color: white"
+        >
+          Log Out
+        </button>
+        <script>
+          function handleLogout() {
+            window.location.href = "../html/login.html";
+          }
+        </script>
+      </div>
+      <nav
+        class="nav-tabs"
+        style="padding: 10px; display: flex; gap: 20px; justify-content: center"
+      >
+        <a
+          href="dashboard.html"
+          class="tab"
+          style="
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #2d3559;
+            /* border: 1px solid #2d3559; */
+            border-radius: 5px;
+          "
+          >Dashboard</a
+        >
+
+        <a
+          href="../html/settings.html"
+          onclick="showContent('settings')"
+          class="tab"
+          style="
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #2d3559;
+            /* border: 1px solid #2d3559; */
+            border-radius: 5px;
+          "
+          >Settings</a
+        >
+      </nav>
+      <div class="mobilesignal">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script
+            type="text/javascript"
+            src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+            async
+          >
+              {
+                "symbols": [{
+                  "description": "",
+                  "proName": "NASDAQ:TSLA"
+                },
+                {
+                  "description": "",
+                  "proName": "NASDAQ:AAPL"
+                },
+                {
+                  "description": "",
+                  "proName": "NASDAQ:NVDA"
+                },
+                {
+                  "description": "",
+                  "proName": "NASDAQ:AMZN"
+                },
+                {
+                  "description": "",
+                  "proName": "NASDAQ:AMD"
+                },
+                {
+                  "description": "",
+                  "proName": "NASDAQ:META"
+                },
+                {
+                  "description": "",
+                  "proName": "NASDAQ:MSFT"
+                },
+                {
+                  "description": "",
+                  "proName": "NASDAQ:NFLX"
+                },
+                {
+                  "description": "",
+                  "proName": "NASDAQ:GOOGL"
+                },
+                {
+                  "description": "",
+                  "proName": "NASDAQ:ZM"
+                },
+                {
+                  "description": "",
+                  "proName": "NASDAQ:SBUX"
+                },
+                {
+                  "description": "",
+                  "proName": "NYSE:BABA"
+                },
+                {
+                  "description": "",
+                  "proName": "NASDAQ:PYPL"
+                },
+                {
+                  "description": "",
+                  "proName": "NYSE:JPM"
+                },
+                {
+                  "description": "",
+                  "proName": "NYSE:DIS"
+                }
+                ],
+                  "showSymbolLogo": true,
+                    "colorTheme": "dark",
+                      "isTransparent": true,
+                        "displayMode": "regular",
+                          "locale": "en"
+            }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+    </header>
+    <div class="about-pattern">
+      <main class="main">
+        <div class="card2">
+          <div class="tabs">
+            <button class="tab active" data-tab="personal">
+              Personal Information
+            </button>
+            <button class="tab" data-tab="security">Security</button>
+            <button class="tab" data-tab="logout">Log Out</button>
+          </div>
+          <div class="form-content" id="security" style="display: none">
+            <form id="securityForm">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="currentPassword">Current Password</label>
+                  <input
+                    type="password"
+                    id="currentPassword"
+                    placeholder="Enter current password"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="newPassword">New Password</label>
+                  <input
+                    type="password"
+                    id="newPassword"
+                    placeholder="Enter new password"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="confirmPassword">Confirm New Password</label>
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm new password"
+                  />
+                </div>
+              </div>
+              <button type="submit" class="save-btn">Change Password</button>
+            </form>
+          </div>
+          <div class="form-content" id="logout" style="display: none">
+            <p>Are you sure you want to log out?</p>
+            <button class="save-btn" onclick="confirmLogout()">Log Out</button>
+            <script>
+              function confirmLogout() {
+                if (confirm("Are you sure you want to log out?")) {
+                  handleLogout();
+                }
+              }
+            </script>
+          </div>
+          <div class="form-content">
+            <form id="profileForm">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter username"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="regDate">Registration Date</label>
+                  <input
+                    type="datetime-local"
+                    id="regDate"
+                    value="2025-01-16T17:25:16"
+                  />
+                  <!-- <input type="text" id="regDate" value="Jan-16-2025 05:25:16 PM" disabled> -->
+                </div>
+                <div class="form-group">
+                  <label for="fullName">Full Name</label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Enter full name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" placeholder="Enter email" />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter phone number"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <input type="text" id="country" placeholder="Enter country" />
+                </div>
+                <div class="form-group">
+                  <label for="btcWallet">Bitcoin wallet</label>
+                  <input
+                    type="text"
+                    id="btcWallet"
+                    placeholder="Enter Bitcoin wallet address"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="ethWallet">Ethereum wallet</label>
+                  <input
+                    type="text"
+                    id="ethWallet"
+                    placeholder="Enter Ethereum wallet address"
+                  />
+                </div>
+              </div>
+              <button type="submit" class="save-btn">Save changes</button>
+            </form>
+          </div>
+        </div>
+
+        <script>
+          // Tab switching functionality
+          const tabs = document.querySelectorAll(".tab");
+          tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+              // Remove active class from all tabs
+              tabs.forEach((t) => t.classList.remove("active"));
+              // Add active class to clicked tab
+              tab.classList.add("active");
+
+              // Hide all form contents
+              document.querySelectorAll(".form-content").forEach((content) => {
+                content.style.display = "none";
+              });
+
+              // Show the selected tab content
+              const tabContentId = tab.getAttribute("data-tab");
+              document.getElementById(tabContentId).style.display = "block";
+            });
+          });
+
+          // Form submission handling
+          const form = document.getElementById("profileForm");
+          form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const formData = {
+              username: document.getElementById("username").value,
+              fullName: document.getElementById("fullName").value,
+              email: document.getElementById("email").value,
+              phone: document.getElementById("phone").value,
+              country: document.getElementById("country").value,
+              btcWallet: document.getElementById("btcWallet").value,
+              ethWallet: document.getElementById("ethWallet").value,
+            };
+            console.log("Form submitted:", formData);
+            // Here you would typically send the data to a server
+            alert("Changes saved successfully!");
+          });
+        </script>
+      </main>
+    </div>
+
+    <footer class="footer" id="footer">
+      <div class="footer-main bg-overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-12 footer-widget footer-about">
+              <div class="footer-logo">
+                <a href="index.html">
+                  <img src="../logo.png" width="100" alt="" />
+                </a>
+              </div>
+              <p>
+                We are an award winning multinational company. We believe in
+                quality and standard worldwide.
+              </p>
+              <!-- Footer social end-->
+            </div>
+            <!-- About us end-->
+            <div class="col-lg-4 col-md-12 footer-widget">
+              <ul class="list-dash">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="mailto:admin@TradeShor.com">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="real-estate.html">Real Estate</a></li>
+                <li><a href="signup.html">Register</a></li>
+                <li><a href="terms.html">Terms and Conditions</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-4 col-md-12W footer-widget">
+              <div>
+                <div class="contact-info-right">
+                  <div class="ts-contact-info">
+                    <div class="ts-contact-content m-0">
+                      <h3 class="ts-contact-title">Find Us</h3>
+                      <p>1100 15th St NW 4th Floor Washington, DC 20005</p>
+                      <p>2108-150 King Street West Toronto, ON M5H 1J9</p>
+                      <p>1 College Hill, London EC4R 2RA, United Kingdom</p>
+                    </div>
+                    <!-- Contact content end-->
+                  </div>
+                  <div class="ts-contact-info">
+                    <div class="ts-contact-content m-0">
+                      <h3 class="ts-contact-title">Call Us</h3>
+                      <p>+447536674168</p>
+                      <p>+17178518473</p>
+                    </div>
+                    <!-- Contact content end-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Content row end-->
+        </div>
+        <!-- Container end-->
+      </div>
+      <!-- Footer Main-->
+      <div class="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+              <div class="copyright-info">
+                <span>Copyright © 2025 TradeShor. All Rights Reserved.</span>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <div class="footer-menu">
+                <ul class="nav unstyled"></ul>
+              </div>
+            </div>
+          </div>
+          <!-- Row end-->
+        </div>
+        <!-- Container end-->
+      </div>
+      <!-- Copyright end-->
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div id="google_translate_element"></div>
+
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
+  </body>
+</html>
